@@ -1,6 +1,0 @@
-*.a
-*.out
-*.pyc
-__pycache__
-.submit
-node_modules

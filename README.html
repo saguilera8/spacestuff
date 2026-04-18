@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Starlink Beam Planner</title>
+  <style>
+      body {
+          font-family: Helvetica, sans-serif;
+      }
+  
+      @media (min-width: 750px) {
+          body {
+              width: 750px;
+              margin: 0 auto;
+          }
+      }
+
+      table {
+          margin: auto;
+      }
+
+      table th, table td {
+          padding-left: 1em;
+      }
+  </style>
+</head>
+<body>
+
+
+
+<h1>Starlink Beam Planner</h1>
+
+<p>The use of artificial intelligence (AI) on this assessment is prohibited and will result in the disqualification of your application.</p>
+
+<p>This test harness will require your submission to contain the following string, as a comment:</p>
+
+<pre><code>I understand that use of artificial intelligence (AI) on this assessment is prohibited.</code></pre>
+
+<h2>The Starlink Constellation</h2>
+
+<p>To provide internet to a user, a satellite forms a "beam" towards that user and the user forms a beam towards the satellite. After doing this the satellite and user can form a high-bandwidth wireless link.</p>
+
+<p>Starlink satellites are designed to be very flexible. For this problem, each satellite is capable of forming up to 32 independent beams simultaneously. Therefore one Satellite can serve up to 32 users. Each beam is assigned one of 4 "colors" corresponding to the frequencies used to communicate with that user.</p>
+
+<p>There are two constraints on how those beams can be placed:</p>
+
+<ul>
+    <li>From the user's perspective, the beam serving them must be within 45 degrees of vertical. Assume a spherical Earth, such that all surface normals pass through the center of the Earth (0, 0, 0).</li>
+    <li>From the satellite's perspective, no two beams of the same color may be pointed within 10 degrees of each other, or they will interfere with one another.</li>
+</ul>
+
+<div style="text-align: center"><img src="diagram.svg" /></div>
+
+
+
+<h2>Problem</h2>
+
+<p>Given a list of users and satellites, assign beams to users respecting the constraints above.</p>
+
+<p>Your solution will be run on a number of test cases. Some test cases have more users than it is possible to serve. Each case includes a minimum number of users that <b>must</b> be served. Constraint violations, crashes, unhandled exceptions, serving less than the minimum number of users, or taking longer than the time limit will all result in failure.</p>
+
+<table>
+    <tr><th></th><th>Users</th><th>Satellites</th><th>Min Coverage</th></tr>
+    <tr><th>Case 1</th><td>2</td><td>1</td><td>100%</td></tr>
+    <tr><th>Case 2</th><td>5</td><td>1</td><td>80%</td></tr>
+    <tr><th>Case 3</th><td>200</td><td>200</td><td>87.5%</td></tr>
+    <tr><th>Case 4</th><td>1000</td><td>200</td><td>88.4%</td></tr>
+    <tr><th>Case 5</th><td>1000</td><td>64</td><td>95%</td></tr>
+    <tr><th>Case 6</th><td>64</td><td>2</td><td>100%</td></tr>
+    <tr><th>Case 7</th><td>33</td><td>2</td><td>100%</td></tr>
+    <tr><th>Case 8</th><td>10000</td><td>720</td><td>82%</td></tr>
+    <tr><th>Case 9</th><td>43000</td><td>5989</td><td>57.5%</td></tr>
+    <tr><th>Case 10</th><td>16</td><td>2</td><td>100%</td></tr>
+</table>
+
+<p>Solutions will be evaluated on user coverage, runtime, and code quality. Do your best to balance these objectives.</p>
+
+<h3>Submitting</h3>
+
+<p>Run <code>make</code> to run all tests and submit the results. Intermediate submissions will not be counted against you. Once you have passed all tests you may continue improving your solution for as long as you want.</p>
+
+<p>Candidates who don't pass all tests within the time limit may still be considered on a case by case basis.</p>
+
+<h3>C++</h3>
+
+<p>Implement your solution in <code>solution.cc</code> and use <code>make</code> to compile and run all tests under C++17. You may use the C++ standard library and C runtime library but no other third-party libraries.</p>
+
+<p>Only <code>solution.cc</code> will be submitted, so please keep your solution entirely within it.</p>
+
+<p>Your solution should write its output as plain ASCII text to a file <code>solution.txt</code> in the current working directory, one beam per line. Each beam should be of the form <code>user sat color</code>, where <code>user</code> and <code>sat</code> are the indices of the user and sat which are connected by this beam, and <code>color</code> is one of <code>A</code>, <code>B</code>, <code>C</code>, or <code>D</code>. Empty lines and lines beginning with <code>#</code> are ignored.</p>
+
+<h3>Bonus</h3>
+
+<p>The test harness also reports the average <b>latency</b> of connected users, defined as the round trip time at the speed of light in vacuum between the user and the satellite to which they are connected. After passing coverage objectives, lower latency solutions are better.</p>
+
+<p>Case 10 is a bonus case: it is not required to pass, but it is possible to serve all users.</p>
+
+<h3>A Note on Security</h3>
+
+<p>This is not a security test - faking results or otherwise trying to subvert the grading will disqualify your submission. If you're interested in security, we encourage you to apply to our software security roles <a href="https://www.spacex.com/careers/jobs?search=Security%2520Software">here</a>.</p>
+
+
+
+</body>
+</html>
